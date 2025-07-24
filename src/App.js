@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { LineChart, Line, ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis } from 'recharts'
+import {  ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis } from 'recharts'
 
 function App() {
   const [coinHistory, setCoinHistory] = useState({});
@@ -78,7 +78,7 @@ function App() {
     }, 60000); // 10000ms =10 sec
 
     return () => clearInterval(interval);
-  }, []);
+  }, [fetchPrices]);
 
 
   const [darkMode, setDarkMode] = useState(true);
