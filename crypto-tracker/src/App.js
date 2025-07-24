@@ -115,7 +115,7 @@ function App() {
           label="Dark Mode"
         />
 
-        <Typography variant="h4" sx={{ mb: 3 }} align="center" gutterBottom>Live Crypto Tracker Dashboard 💸₿🪙🚀 </Typography>
+        <Typography variant="h4" sx={{ mb: 3 }} align="center" gutterBottom>Live Crypto Tracker Dashboard ₿ </Typography>
         <Grid container spacing={2} justifyContent="center">
           {coinList.map((coin) => (
             <Grid item xs={12} sm={2} md={4} key={coin}>
