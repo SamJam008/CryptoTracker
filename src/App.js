@@ -7,9 +7,11 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis } from 'recharts'
 
+
+const coinList = ['bitcoin', 'ethereum', 'dogecoin', 'solana', 'cardano']
+
 function App() {
   const [coinHistory, setCoinHistory] = useState({});
-  const coinList = ['bitcoin', 'ethereum', 'dogecoin', 'solana', 'cardano']
   const [prices, setPrices] = useState({
     bitcoin: null,
     ethereum: null,
