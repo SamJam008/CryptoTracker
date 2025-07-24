@@ -2,7 +2,7 @@
 
 A responsive React-based dashboard to display live cryptocurrency prices (in INR) with historical sparkline charts and a toggleable dark mode. Built using React, Material UI, and Recharts.
 
-![Screenshot](./Screenshot 2025-07-24 221202.png)
+![dashboard](/screenshort.png)
 
 ---
 
