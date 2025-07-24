@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {  ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis } from 'recharts'
+import { ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis } from 'recharts'
 
 function App() {
   const [coinHistory, setCoinHistory] = useState({});
@@ -28,51 +28,49 @@ function App() {
   //     .catch((err) => console.error('Error fetching prices', err))
 
   // };
-  const fetchPrices = async () => {
-    const latestPrices = {};
-    const historicalData = {};
-    for (const coin of coinList) {
-      try {
-        const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=inr&days=7`);
-        const data = await res.json();
 
-        // store latest price (last item)
-        const lastPrice = data.prices[data.prices.length - 1][1];
-        latestPrices[coin] = { inr: lastPrice };
-
-        //   historicalData[coin] = data.prices.map(([timestamp, price]) => ({
-        //     time: new Date(timestamp).toLocaleDateString([], { hour: '2-digit', minute: '2-digit' }),
-        //     price: price,
-        //   }));
-        // }
-        historicalData[coin] = data.prices.map(([timestamp, price]) => ({
-          time: timestamp, // timestamp is in ms
-          price: price,
-        }));
-      }
-
-
-      catch (error) {
-        console.error(`Error fetching data for ${coin}:`, error);
-      }
-
-
-
-    }
-    //console.log(new Date(coinHistory['ethereum'][0].time).toString());
-    console.log('Latest Prices:', latestPrices);
-    console.log('Historical Data:', historicalData);
-
-
-
-    setPrices(latestPrices);
-    setCoinHistory(historicalData);
-  };
 
   useEffect(() => {
-    fetchPrices(); //fetch immediately on first load
+    const fetchPrices = async () => {
+      const latestPrices = {};
+      const historicalData = {};
+      for (const coin of coinList) {
+        try {
+          const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=inr&days=7`);
+          const data = await res.json();
+
+          // store latest price (last item)
+          const lastPrice = data.prices[data.prices.length - 1][1];
+          latestPrices[coin] = { inr: lastPrice };
+
+          //   historicalData[coin] = data.prices.map(([timestamp, price]) => ({
+          //     time: new Date(timestamp).toLocaleDateString([], { hour: '2-digit', minute: '2-digit' }),
+          //     price: price,
+          //   }));
+          // }
+          historicalData[coin] = data.prices.map(([timestamp, price]) => ({
+            time: timestamp, // timestamp is in ms
+            price: price,
+          }));
+        }
 
 
+        catch (error) {
+          console.error(`Error fetching data for ${coin}:`, error);
+        }
+
+
+      }
+      //console.log(new Date(coinHistory['ethereum'][0].time).toString());
+      console.log('Latest Prices:', latestPrices);
+      console.log('Historical Data:', historicalData);
+
+
+
+      setPrices(latestPrices);
+      setCoinHistory(historicalData);
+    }
+    fetchPrices(); // initial fetch
     const interval = setInterval(() => {
       fetchPrices(); // fetch every 60 seconds
     }, 60000); // 10000ms =10 sec
