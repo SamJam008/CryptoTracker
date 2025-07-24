@@ -78,7 +78,7 @@ function App() {
     }, 60000); // 10000ms =10 sec
 
     return () => clearInterval(interval);
-  }, [fetchPrices]);
+  }, []);
 
 
   const [darkMode, setDarkMode] = useState(true);
