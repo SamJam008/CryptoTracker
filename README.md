@@ -31,4 +31,4 @@ A responsive React-based dashboard to display live cryptocurrency prices (in INR
 
 ```bash
 git clone https://github.com/your-username/crypto-tracker.git
-cd crypto-tracker
+
